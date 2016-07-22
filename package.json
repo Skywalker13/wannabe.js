@@ -12,6 +12,7 @@
   "dependencies": {
     "babylon": "^6.8.3",
     "mocha": "^2.5.3",
+    "traverse": "^0.6.6",
     "v8-debugger": "^1.0.0",
     "watt": "^3.2.3"
   }
