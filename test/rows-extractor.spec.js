@@ -19,7 +19,7 @@ const script = `/*  1 */
 /* 12 */      bar ();
 /* 13 */    }
 /* 14 */  });
-/* 15 */  it ('_bar', function () {
+/* 15 */  it ('_bar', () => {
 /* 16 */    const a = true;
 /* 17 */    if (true) {
 /* 18 */      // foo
