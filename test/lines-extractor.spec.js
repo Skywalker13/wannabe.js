@@ -35,12 +35,12 @@ const script = `/*  1 */
 describe ('lines-extractor', function () {
   it ('#byFile (regex)', function () {
     expect (linesExtractor.byFile (path.join (__dirname, './sample.js'), 'it', /a.[0-9]/))
-      .to.be.eql ([13, 14]);
+      .to.be.eql ([12, 13]);
   });
 
   it ('#byFile (string)', function () {
     expect (linesExtractor.byFile (path.join (__dirname, './sample.js'), 'it', 'a.1'))
-      .to.be.eql ([13, 14]);
+      .to.be.eql ([12, 13]);
   });
 
   it ('#byData (regex)', function () {

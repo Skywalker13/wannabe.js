@@ -1,8 +1,7 @@
 'use strict';
 
 function get (v) {
-  switch (v)
-  {
+  switch (v) {
   case 1: return 'foo';
   case 2: return 'bar';
   }
