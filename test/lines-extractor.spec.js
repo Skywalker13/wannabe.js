@@ -1,8 +1,8 @@
 'use strict';
 
-const path          = require ('path');
-const {expect}      = require ('chai');
-const rowsExtractor = require ('../lib/rows-extractor.js');
+const path           = require ('path');
+const {expect}       = require ('chai');
+const linesExtractor = require ('../lib/lines-extractor.js');
 
 
 const script = `/*  1 */
@@ -32,24 +32,24 @@ const script = `/*  1 */
 /* 25 */});
 `;
 
-describe ('rows-extractor', function () {
+describe ('lines-extractor', function () {
   it ('#byFile (regex)', function () {
-    expect (rowsExtractor.byFile (path.join (__dirname, './sample.js'), 'it', /a.[0-9]/))
+    expect (linesExtractor.byFile (path.join (__dirname, './sample.js'), 'it', /a.[0-9]/))
       .to.be.eql ([13, 14]);
   });
 
   it ('#byFile (string)', function () {
-    expect (rowsExtractor.byFile (path.join (__dirname, './sample.js'), 'it', 'a.1'))
+    expect (linesExtractor.byFile (path.join (__dirname, './sample.js'), 'it', 'a.1'))
       .to.be.eql ([13, 14]);
   });
 
   it ('#byData (regex)', function () {
-    expect (rowsExtractor.byData (script, 'it', /^_.*/))
+    expect (linesExtractor.byData (script, 'it', /^_.*/))
       .to.be.eql ([6, 7, 9, 10, 12, 16, 17, 19, 20, 22]);
   });
 
   it ('#byData (string)', function () {
-    expect (rowsExtractor.byData (script, 'it', '_foo'))
+    expect (linesExtractor.byData (script, 'it', '_foo'))
       .to.be.eql ([6, 7, 9, 10, 12]);
   });
 });
