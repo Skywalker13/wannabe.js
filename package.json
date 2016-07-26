@@ -4,7 +4,7 @@
   "description": "Wannabe",
   "main": "lib/index.js",
   "scripts": {
-    "node": "mocha -d -g a.1",
+    "node": "mocha -d --debug-brk -g a.1",
     "test": "mocha test/**/*.spec.js"
   },
   "author": "Mathieu Schroeter",
