@@ -29,4 +29,11 @@ describe ('index', function () {
         done ();
       });
   });
+
+  it ('#default (bad js)', function (done) {
+    wannabe (path.join (__dirname, './other.txt'), null, 'it', 'a.1', (err, frames) => {
+      expect (err).to.be.not.null;
+      done ();
+    });
+  });
 });

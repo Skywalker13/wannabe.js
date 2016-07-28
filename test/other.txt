@@ -1,0 +1,1 @@
+It's just an other file that it's not JS.
