@@ -6,10 +6,9 @@ const wannabe  = require ('../lib/index.js');
 
 
 describe ('index', function () {
-  it ('#default', function (done) {
-    wannabe (path.join (__dirname, './sample.js'), null, 'it', 'a.1')
-      .then ((frames, err) => {
-        expect (err).to.be.undefined;
+  it ('#default (good js)', function (done) {
+    wannabe (path.join (__dirname, './sample.js'), null, 'it', 'a.1', (err, frames) => {
+        expect (err).to.be.null;
         expect (frames).to.be.eql ({
           '12': [{
             name: 'test',
