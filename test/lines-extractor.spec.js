@@ -33,46 +33,46 @@ const script = `/*  1 */
 `;
 
 describe ('lines-extractor', function () {
-  it ('#byFile (regex)', function () {
-    expect (LinesExtractor.byFile (path.join (__dirname, './sample.js'), 'it', /a.[0-9]/))
+  it ('#byFuncInFile (regex)', function () {
+    expect (LinesExtractor.byFuncInFile (path.join (__dirname, './sample.js'), 'it', /a.[0-9]/))
       .to.be.eql ([12, 13]);
   });
 
-  it ('#byFile (string)', function () {
-    expect (LinesExtractor.byFile (path.join (__dirname, './sample.js'), 'it', 'a.1'))
+  it ('#byFuncInFile (string)', function () {
+    expect (LinesExtractor.byFuncInFile (path.join (__dirname, './sample.js'), 'it', 'a.1'))
       .to.be.eql ([12, 13]);
   });
 
-  it ('#byData (regex)', function () {
-    expect (LinesExtractor.byData (script, 'it', /^_.*/))
+  it ('#byFuncInData (regex)', function () {
+    expect (LinesExtractor.byFuncInData (script, 'it', /^_.*/))
       .to.be.eql ([6, 7, 9, 10, 12, 16, 17, 19, 20, 22]);
   });
 
-  it ('#byData (string)', function () {
-    expect (LinesExtractor.byData (script, 'it', '_foo'))
+  it ('#byFuncInData (string)', function () {
+    expect (LinesExtractor.byFuncInData (script, 'it', '_foo'))
       .to.be.eql ([6, 7, 9, 10, 12]);
   });
 
-  it ('#byLine', function () {
-    expect (LinesExtractor.byLine (script, 4, 'it'))
+  it ('#byLineInData', function () {
+    expect (LinesExtractor.byLineInData (script, 'it', 4).lines)
       .to.be.eql ([]);
-    expect (LinesExtractor.byLine (script, 5, 'it'))
+    expect (LinesExtractor.byLineInData (script, 'it', 5).lines)
       .to.be.eql ([6, 7, 9, 10, 12]);
-    expect (LinesExtractor.byLine (script, 14, 'it'))
+    expect (LinesExtractor.byLineInData (script, 'it', 14).lines)
       .to.be.eql ([6, 7, 9, 10, 12]);
-    expect (LinesExtractor.byLine (script, 22, 'it'))
+    expect (LinesExtractor.byLineInData (script, 'it', 22).lines)
       .to.be.eql ([16, 17, 19, 20, 22]);
-    expect (LinesExtractor.byLine (script, 25, 'it'))
+    expect (LinesExtractor.byLineInData (script, 'it', 25).lines)
       .to.be.eql ([]);
   });
 
   it ('#_getTestName', function () {
-    expect (LinesExtractor._getTestBody (script, 4, 'it').name).to.be.null;
-    expect (LinesExtractor._getTestBody (script, 5, 'it').name).to.be.eql ('_foo');
-    expect (LinesExtractor._getTestBody (script, 14, 'it').name).to.be.eql ('_foo');
-    expect (LinesExtractor._getTestBody (script, 15, 'it').name).to.be.eql ('_bar');
-    expect (LinesExtractor._getTestBody (script, 22, 'it').name).to.be.eql ('_bar');
-    expect (LinesExtractor._getTestBody (script, 24, 'it').name).to.be.eql ('_bar');
-    expect (LinesExtractor._getTestBody (script, 25, 'it').name).to.be.null;
+    expect (LinesExtractor._getTestBody (script, 'it', 4).name).to.be.null;
+    expect (LinesExtractor._getTestBody (script, 'it', 5).name).to.be.eql ('_foo');
+    expect (LinesExtractor._getTestBody (script, 'it', 14).name).to.be.eql ('_foo');
+    expect (LinesExtractor._getTestBody (script, 'it', 15).name).to.be.eql ('_bar');
+    expect (LinesExtractor._getTestBody (script, 'it', 22).name).to.be.eql ('_bar');
+    expect (LinesExtractor._getTestBody (script, 'it', 24).name).to.be.eql ('_bar');
+    expect (LinesExtractor._getTestBody (script, 'it', 25).name).to.be.null;
   })
 });
