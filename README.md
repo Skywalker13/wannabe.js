@@ -12,22 +12,24 @@ extracted from these frames.
 
 ## Steps
 
-1. Use `linesExtractor` in order to extract all lines of a specific test.
+1. Use `Extractor` in order to extract all lines of a specific test.
 2. Run **mocha** on the specified test and break on the first line.
-3. Set breakpoints for all lines retrieved with `linesExtractor`.
+3. Set breakpoints for all lines retrieved with `Extractor`.
 4. Continue to the next breakpoint and save the context in a map.
 5. Loop (point 4) until that mocha is terminated.
 
 ## API
 
 ```js
-wannabe (script, data, funcName, pattern, callback);
+wannabe.byPattern (script, data, funcName, pattern, callback);
+wannabe.byLine (script, data, funcName, line, callback);
 ```
 
  * `script`: script to run with **mocha** (depends of `data`)
  * `data`: the content of the script (can be null)
  * `funcName`: name of the functions to inspect (for example, `it()`)
  * `pattern`: extract only function which match `it (pattern, ...)`
+ * `line`: extract only function where `line` is in its scope
  * `callback`: the extracted frames
 
 If a content is passed with `data`, then only the parent directory of `script`
@@ -62,7 +64,11 @@ Wannabe:
 
 const wannabe = require ('wannabe');
 
-wannabe ('./test.js', null, 'it', /test[0-9]/, (err, frames) => {
+wannabe.byPattern ('./test.js', null, 'it', /test[0-9]/, (err, frames) => {
+  /* ... */
+});
+
+wannabe.byLine ('./test.js', null, 'it', 5, (err, frames) => {
   /* ... */
 });
 ```
