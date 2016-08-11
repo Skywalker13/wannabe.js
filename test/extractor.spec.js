@@ -1,7 +1,7 @@
 'use strict';
 
-const path           = require ('path');
-const {expect}       = require ('chai');
+const path      = require ('path');
+const {expect}  = require ('chai');
 const Extractor = require ('../lib/extractor.js');
 
 
@@ -32,7 +32,7 @@ const script = `/*  1 */
 /* 25 */});
 `;
 
-describe ('lines-extractor', function () {
+describe ('extractor', function () {
   it ('#byFuncInFile (regex)', function () {
     expect (Extractor.byFuncInFile (path.join (__dirname, './sample.js'), 'it', /a.[0-9]/))
       .to.be.eql ([12, 13]);
