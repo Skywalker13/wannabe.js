@@ -7,18 +7,30 @@ const wannabe  = require ('../lib/index.js');
 
 const goodResult = {
   '12': [{
-    name: 'test',
-    value: 'foo'
-  }, {
-    name: 'a1',
-    value: undefined
+    arguments: [],
+    locals: [{
+      name: 'test',
+      type: 'string',
+      value: 'foo'
+    }, {
+      'name': 'a1',
+      'type': 'undefined',
+      'value': undefined
+    }],
+    returnValue: null
   }],
   '13': [{
-    name: 'test',
-    value: 'foo'
-  }, {
-    name: 'a1',
-    value: 'foo - bar'
+    arguments: [],
+    locals: [{
+      name: 'test',
+      type: 'string',
+      value: 'foo'
+    }, {
+      'name': 'a1',
+      'type': 'string',
+      'value': 'foo - bar'
+    }],
+    returnValue: null
   }]
 };
 
