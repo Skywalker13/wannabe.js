@@ -12,4 +12,8 @@ describe ('a', function () {
     let test = get (1);
     let a1 = test + ' - ' + get (2);
   });
+
+  it ('b.1', function () {
+    throw new Error ('sample error');
+  });
 });
