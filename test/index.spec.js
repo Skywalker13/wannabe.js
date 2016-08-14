@@ -68,7 +68,7 @@ describe ('index', function () {
   it ('exception', function (done) {
     wannabe.byPattern (path.join (__dirname, './sample.js'), null, 'it', 'b.1', (err, frames) => {
       expect (frames).to.be.eql ({
-        '16': [{
+        '17': [{
           exception: {
             type: 'error',
             text: 'Error: sample error'
