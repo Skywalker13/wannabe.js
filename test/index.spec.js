@@ -78,4 +78,18 @@ describe ('index', function () {
       done ();
     });
   });
+
+  it ('assert', function (done) {
+    wannabe.byPattern (path.join (__dirname, './sample.js'), null, 'it', 'c.1', (err, frames) => {
+      expect (frames).to.be.eql ({
+        '23': [{
+          exception: {
+            type: 'object',
+            text: '#<AssertionError>'
+          }
+        }]
+      });
+      done ();
+    });
+  });
 });
