@@ -18,4 +18,8 @@ describe ('a', function () {
   it ('b.1', function () {
     throw new Error ('sample error');
   });
+
+  it ('c.1', function () {
+    expect (true).to.be.false;
+  });
 });
