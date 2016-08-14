@@ -88,4 +88,10 @@ describe ('index', function () {
       done ();
     });
   });
+
+  it ('scopes', function (done) {
+    wannabe.byPattern (path.join (__dirname, './sample.js'), null, 'it', 'd.1', (err, results) => {
+      done ();
+    });
+  });
 });

@@ -22,4 +22,12 @@ describe ('a', function () {
   it ('c.1', function () {
     expect (true).to.be.false;
   });
+
+  it ('d.1', function () {
+    let a = 1;
+    {
+      let b = 2;
+      a = 2;
+    }
+  });
 });
