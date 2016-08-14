@@ -12,10 +12,6 @@ const goodResult = {
       name: 'test',
       type: 'string',
       value: 'foo'
-    }, {
-      'name': 'a1',
-      'type': 'undefined',
-      'value': undefined
     }],
     returnValue: null
   }],
