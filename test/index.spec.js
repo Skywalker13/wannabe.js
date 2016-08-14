@@ -6,7 +6,7 @@ const wannabe  = require ('../lib/index.js');
 
 
 const goodResult = {
-  '12': [{
+  '14': [{
     arguments: [],
     locals: [{
       name: 'test',
@@ -19,7 +19,7 @@ const goodResult = {
     }],
     returnValue: null
   }],
-  '13': [{
+  '15': [{
     arguments: [],
     locals: [{
       name: 'test',
@@ -51,7 +51,7 @@ describe ('index', function () {
   });
 
   it ('#byLine (good js)', function (done) {
-    wannabe.byLine (path.join (__dirname, './sample.js'), null, 'it', 13, (err, frames) => {
+    wannabe.byLine (path.join (__dirname, './sample.js'), null, 'it', 15, (err, frames) => {
       expect (err).to.be.null;
       expect (frames).to.be.eql (goodResult);
       done ();
@@ -59,7 +59,7 @@ describe ('index', function () {
   })
 
   it ('#byLine (bad js)', function (done) {
-    wannabe.byPattern (path.join (__dirname, './other.txt'), null, 'it', 13, (err, frames) => {
+    wannabe.byPattern (path.join (__dirname, './other.txt'), null, 'it', 15, (err, frames) => {
       expect (err.message).to.match (/Unexpected token.*/);
       done ();
     });
@@ -68,7 +68,7 @@ describe ('index', function () {
   it ('exception', function (done) {
     wannabe.byPattern (path.join (__dirname, './sample.js'), null, 'it', 'b.1', (err, frames) => {
       expect (frames).to.be.eql ({
-        '17': [{
+        '19': [{
           exception: {
             type: 'error',
             text: 'Error: sample error'

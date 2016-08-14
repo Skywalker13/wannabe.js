@@ -35,12 +35,12 @@ const script = `/*  1 */
 describe ('extractor', function () {
   it ('#byFuncInFile (regex)', function () {
     expect (Extractor.byFuncInFile (path.join (__dirname, './sample.js'), 'it', /a.[0-9]/))
-      .to.be.eql ([12, 13]);
+      .to.be.eql ([14, 15]);
   });
 
   it ('#byFuncInFile (string)', function () {
     expect (Extractor.byFuncInFile (path.join (__dirname, './sample.js'), 'it', 'a.1'))
-      .to.be.eql ([12, 13]);
+      .to.be.eql ([14, 15]);
   });
 
   it ('#byFuncInData (regex)', function () {
