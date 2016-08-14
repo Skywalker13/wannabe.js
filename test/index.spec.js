@@ -22,9 +22,9 @@ const goodResult = {
       type: 'string',
       value: 'foo'
     }, {
-      'name': 'a1',
-      'type': 'string',
-      'value': 'foo - bar'
+      name: 'a1',
+      type: 'string',
+      value: 'foo - bar'
     }],
     returnValue: null
   }]
