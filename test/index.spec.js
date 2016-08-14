@@ -36,38 +36,38 @@ const goodResult = {
 
 describe ('index', function () {
   it ('#byPattern (good js)', function (done) {
-    wannabe.byPattern (path.join (__dirname, './sample.js'), null, 'it', 'a.1', (err, frames) => {
+    wannabe.byPattern (path.join (__dirname, './sample.js'), null, 'it', 'a.1', (err, results) => {
       expect (err).to.be.null;
-      expect (frames).to.be.eql (goodResult);
+      expect (results.frames).to.be.eql (goodResult);
       done ();
     });
   });
 
   it ('#byPattern (bad js)', function (done) {
-    wannabe.byPattern (path.join (__dirname, './other.txt'), null, 'it', 'a.1', (err, frames) => {
+    wannabe.byPattern (path.join (__dirname, './other.txt'), null, 'it', 'a.1', (err, results) => {
       expect (err.message).to.match (/Unexpected token.*/);
       done ();
     });
   });
 
   it ('#byLine (good js)', function (done) {
-    wannabe.byLine (path.join (__dirname, './sample.js'), null, 'it', 15, (err, frames) => {
+    wannabe.byLine (path.join (__dirname, './sample.js'), null, 'it', 15, (err, results) => {
       expect (err).to.be.null;
-      expect (frames).to.be.eql (goodResult);
+      expect (results.frames).to.be.eql (goodResult);
       done ();
     });
   })
 
   it ('#byLine (bad js)', function (done) {
-    wannabe.byPattern (path.join (__dirname, './other.txt'), null, 'it', 15, (err, frames) => {
+    wannabe.byPattern (path.join (__dirname, './other.txt'), null, 'it', 15, (err, results) => {
       expect (err.message).to.match (/Unexpected token.*/);
       done ();
     });
   });
 
   it ('exception', function (done) {
-    wannabe.byPattern (path.join (__dirname, './sample.js'), null, 'it', 'b.1', (err, frames) => {
-      expect (frames).to.be.eql ({
+    wannabe.byPattern (path.join (__dirname, './sample.js'), null, 'it', 'b.1', (err, results) => {
+      expect (results.frames).to.be.eql ({
         '19': [{
           exception: {
             type: 'error',
@@ -80,8 +80,8 @@ describe ('index', function () {
   });
 
   it ('assert', function (done) {
-    wannabe.byPattern (path.join (__dirname, './sample.js'), null, 'it', 'c.1', (err, frames) => {
-      expect (frames).to.be.eql ({
+    wannabe.byPattern (path.join (__dirname, './sample.js'), null, 'it', 'c.1', (err, results) => {
+      expect (results.frames).to.be.eql ({
         '23': [{
           exception: {
             type: 'object',
