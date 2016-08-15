@@ -67,7 +67,7 @@ describe ('index', function () {
         '19': [{
           exception: {
             type: 'error',
-            text: 'Error: sample error'
+            text: 'sample error'
           }
         }
       ]});
@@ -81,7 +81,7 @@ describe ('index', function () {
         '23': [{
           exception: {
             type: 'object',
-            text: '#<AssertionError>'
+            text: 'expected true to be false'
           }
         }]
       });
