@@ -1,4 +1,5 @@
 'use strict';
+/* jshint -W030 */
 
 const path     = require ('path');
 const {expect} = require ('chai');
@@ -6,7 +7,7 @@ const wannabe  = require ('../lib/index.js');
 
 
 const goodResult = {
-  '14': [{
+  14: [{
     arguments: [],
     locals: [{
       name: 'test',
@@ -15,7 +16,7 @@ const goodResult = {
     }],
     returnValue: null
   }],
-  '15': [{
+  15: [{
     arguments: [],
     locals: [{
       name: 'test',
@@ -40,7 +41,7 @@ describe ('index', function () {
   });
 
   it ('#byPattern (bad js)', function (done) {
-    wannabe.byPattern (path.join (__dirname, './other.txt'), null, 'it', 'a.1', (err, results) => {
+    wannabe.byPattern (path.join (__dirname, './other.txt'), null, 'it', 'a.1', (err) => {
       expect (err.message).to.match (/Unexpected token.*/);
       done ();
     });
@@ -52,10 +53,10 @@ describe ('index', function () {
       expect (results.frames).to.be.eql (goodResult);
       done ();
     });
-  })
+  });
 
   it ('#byLine (bad js)', function (done) {
-    wannabe.byPattern (path.join (__dirname, './other.txt'), null, 'it', 15, (err, results) => {
+    wannabe.byPattern (path.join (__dirname, './other.txt'), null, 'it', 15, (err) => {
       expect (err.message).to.match (/Unexpected token.*/);
       done ();
     });
@@ -64,7 +65,7 @@ describe ('index', function () {
   it ('exception', function (done) {
     wannabe.byPattern (path.join (__dirname, './sample.js'), null, 'it', 'b.1', (err, results) => {
       expect (results.frames).to.be.eql ({
-        '19': [{
+        19: [{
           exception: {
             type: 'error',
             text: 'sample error'
@@ -78,7 +79,7 @@ describe ('index', function () {
   it ('assert', function (done) {
     wannabe.byPattern (path.join (__dirname, './sample.js'), null, 'it', 'c.1', (err, results) => {
       expect (results.frames).to.be.eql ({
-        '23': [{
+        23: [{
           exception: {
             type: 'object',
             text: 'expected true to be false'
@@ -90,7 +91,7 @@ describe ('index', function () {
   });
 
   it ('scopes', function (done) {
-    wannabe.byPattern (path.join (__dirname, './sample.js'), null, 'it', 'd.1', (err, results) => {
+    wannabe.byPattern (path.join (__dirname, './sample.js'), null, 'it', 'd.1', () => {
       done ();
     });
   });
