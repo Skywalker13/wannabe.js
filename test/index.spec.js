@@ -1,9 +1,8 @@
 'use strict';
-/* jshint -W030 */
 
 const path     = require ('path');
 const {expect} = require ('chai');
-const wannabe  = require ('../lib/index.js');
+const Wannabe  = require ('../lib/index.js');
 
 
 const goodResult = {
@@ -35,7 +34,8 @@ const goodResult = {
 
 describe ('index', function () {
   it ('#byPattern (good js)', function (done) {
-    wannabe.byPattern (path.join (__dirname, './sample.js'), null, 'it', 'a.1', (err, results) => {
+    const wannabe = new Wannabe (path.join (__dirname, './sample.js'), null, 'it', 'a.1');
+    wannabe.run ((err, results) => {
       expect (err).to.be.null;
       expect (results.frames).to.be.eql (goodResult);
       done ();
@@ -43,14 +43,16 @@ describe ('index', function () {
   });
 
   it ('#byPattern (bad js)', function (done) {
-    wannabe.byPattern (path.join (__dirname, './other.txt'), null, 'it', 'a.1', (err) => {
+    const wannabe = new Wannabe (path.join (__dirname, './other.txt'), null, 'it', 'a.1');
+    wannabe.run ((err) => {
       expect (err.message).to.match (/Unexpected token.*/);
       done ();
     });
   });
 
   it ('#byLine (good js)', function (done) {
-    wannabe.byLine (path.join (__dirname, './sample.js'), null, 'it', 15, (err, results) => {
+    const wannabe = new Wannabe (path.join (__dirname, './sample.js'), null, 'it', 15);
+    wannabe.run ((err, results) => {
       expect (err).to.be.null;
       expect (results.frames).to.be.eql (goodResult);
       done ();
@@ -58,14 +60,16 @@ describe ('index', function () {
   });
 
   it ('#byLine (bad js)', function (done) {
-    wannabe.byPattern (path.join (__dirname, './other.txt'), null, 'it', 15, (err) => {
+    const wannabe = new Wannabe (path.join (__dirname, './other.txt'), null, 'it', 15);
+    wannabe.run ((err) => {
       expect (err.message).to.match (/Unexpected token.*/);
       done ();
     });
   });
 
   it ('exception', function (done) {
-    wannabe.byPattern (path.join (__dirname, './sample.js'), null, 'it', 'b.1', (err, results) => {
+    const wannabe = new Wannabe (path.join (__dirname, './sample.js'), null, 'it', 'b.1');
+    wannabe.run ((err, results) => {
       expect (results.frames).to.be.eql ({
         19: [{
           exception: {
@@ -80,7 +84,8 @@ describe ('index', function () {
   });
 
   it ('assert', function (done) {
-    wannabe.byPattern (path.join (__dirname, './sample.js'), null, 'it', 'c.1', (err, results) => {
+    const wannabe = new Wannabe (path.join (__dirname, './sample.js'), null, 'it', 'c.1');
+    wannabe.run ((err, results) => {
       expect (results.frames).to.be.eql ({
         23: [{
           exception: {
@@ -95,7 +100,8 @@ describe ('index', function () {
   });
 
   it ('scopes', function (done) {
-    wannabe.byPattern (path.join (__dirname, './sample.js'), null, 'it', 'd.1', () => {
+    const wannabe = new Wannabe (path.join (__dirname, './sample.js'), null, 'it', 'd.1');
+    wannabe.run (() => {
       done ();
     });
   });
