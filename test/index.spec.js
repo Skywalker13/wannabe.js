@@ -9,6 +9,7 @@ const wannabe  = require ('../lib/index.js');
 const goodResult = {
   14: [{
     arguments: [],
+    line: 14,
     locals: [{
       name: 'test',
       type: 'string',
@@ -18,6 +19,7 @@ const goodResult = {
   }],
   15: [{
     arguments: [],
+    line: 15,
     locals: [{
       name: 'test',
       type: 'string',
@@ -69,7 +71,8 @@ describe ('index', function () {
           exception: {
             type: 'error',
             text: 'sample error'
-          }
+          },
+          line: 19
         }
       ]});
       done ();
@@ -83,7 +86,8 @@ describe ('index', function () {
           exception: {
             type: 'object',
             text: 'expected true to be false'
-          }
+          },
+          line: 23
         }]
       });
       done ();
