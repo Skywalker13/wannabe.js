@@ -4,8 +4,8 @@ const {expect} = require ('chai');
 
 function get (v) {
   switch (v) {
-  case 1: return 'foo';
-  case 2: return 'bar';
+    case 1: return 'foo';
+    case 2: return 'bar';
   }
 }
 
