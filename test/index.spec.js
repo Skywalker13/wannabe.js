@@ -14,7 +14,10 @@ const goodResult = {
       type: 'string',
       value: 'foo'
     }],
-    returnValue: null
+    returnValue: null,
+    test: {
+      line: 13
+    }
   }],
   15: [{
     arguments: [],
@@ -28,7 +31,10 @@ const goodResult = {
       type: 'string',
       value: 'foo - bar'
     }],
-    returnValue: null
+    returnValue: null,
+    test: {
+      line: 13
+    }
   }]
 };
 
@@ -76,7 +82,10 @@ describe ('index', function () {
             type: 'error',
             text: 'sample error'
           },
-          line: 19
+          line: 19,
+          test: {
+            line: 18
+          }
         }
       ]});
       done ();
@@ -92,7 +101,10 @@ describe ('index', function () {
             type: 'object',
             text: 'expected true to be false'
           },
-          line: 23
+          line: 23,
+          test: {
+            line: 22
+          }
         }]
       });
       done ();
