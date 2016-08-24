@@ -7,31 +7,35 @@ const Wannabe  = require ('../lib/index.js');
 
 const goodResult = {
   14: [{
-    arguments: [],
     line: 14,
-    locals: [{
-      name: 'test',
-      type: 'string',
-      value: 'foo'
-    }],
-    returnValue: null,
+    payload: {
+      arguments: [],
+      locals: [{
+        name: 'test',
+        type: 'string',
+        value: 'foo'
+      }],
+      returnValue: null
+    },
     test: {
       line: 13
     }
   }],
   15: [{
-    arguments: [],
     line: 15,
-    locals: [{
-      name: 'test',
-      type: 'string',
-      value: 'foo'
-    }, {
-      name: 'a1',
-      type: 'string',
-      value: 'foo - bar'
-    }],
-    returnValue: null,
+    payload: {
+      arguments: [],
+      locals: [{
+        name: 'test',
+        type: 'string',
+        value: 'foo'
+      }, {
+        name: 'a1',
+        type: 'string',
+        value: 'foo - bar'
+      }],
+      returnValue: null
+    },
     test: {
       line: 13
     }
@@ -78,9 +82,11 @@ describe ('index', function () {
     wannabe.run ((err, results) => {
       expect (results.frames).to.be.eql ({
         19: [{
-          exception: {
-            type: 'error',
-            text: 'sample error'
+          payload: {
+            exception: {
+              type: 'error',
+              text: 'sample error'
+            }
           },
           line: 19,
           test: {
@@ -97,9 +103,11 @@ describe ('index', function () {
     wannabe.run ((err, results) => {
       expect (results.frames).to.be.eql ({
         23: [{
-          exception: {
-            type: 'object',
-            text: 'expected true to be false'
+          payload: {
+            exception: {
+              type: 'object',
+              text: 'expected true to be false'
+            }
           },
           line: 23,
           test: {
