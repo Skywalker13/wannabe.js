@@ -46,19 +46,19 @@ const script = `/*  1 */
 describe ('extractor', function () {
   it ('#byFuncInFile (regex)', function () {
     const extractor = new Extractor ();
-    expect (extractor.byFuncInFile (path.join (__dirname, './sample.js'), 'it', /a.[0-9]/).lines)
+    expect (extractor.byFuncInFile (path.join (__dirname, './sample.js'), /^it$/, /a.[0-9]/).lines)
       .to.be.eql ({14: 13, 15: 13});
   });
 
   it ('#byFuncInFile (string)', function () {
     const extractor = new Extractor ();
-    expect (extractor.byFuncInFile (path.join (__dirname, './sample.js'), 'it', 'a.1').lines)
+    expect (extractor.byFuncInFile (path.join (__dirname, './sample.js'), /^it$/, 'a.1').lines)
       .to.be.eql ({14: 13, 15: 13});
   });
 
   it ('#byFuncInData (regex)', function () {
     const extractor = new Extractor ();
-    expect (extractor.byFuncInData (script, 'it', /^_.*/).lines)
+    expect (extractor.byFuncInData (script, /^it$/, /^_.*/).lines)
       .to.be.eql ({
         6: 5, 7: 5, 9: 5, 10: 5, 12: 5,
         16: 15, 17: 15, 19: 15, 20: 15, 22: 15,
@@ -68,32 +68,32 @@ describe ('extractor', function () {
 
   it ('#byFuncInData (string)', function () {
     const extractor = new Extractor ();
-    expect (extractor.byFuncInData (script, 'it', '_foo').lines)
+    expect (extractor.byFuncInData (script, /^it$/, '_foo').lines)
       .to.be.eql ({6: 5, 7: 5, 9: 5, 10: 5, 12: 5});
   });
 
   it ('#byLineInData', function () {
     const extractor = new Extractor ();
-    expect (extractor.byLineInData (script, 'it', 4).lines)
+    expect (extractor.byLineInData (script, /^it$/, 4).lines)
       .to.be.eql ({});
-    expect (extractor.byLineInData (script, 'it', 5).lines)
+    expect (extractor.byLineInData (script, /^it$/, 5).lines)
       .to.be.eql ({6: 5, 7: 5, 9: 5, 10: 5, 12: 5});
-    expect (extractor.byLineInData (script, 'it', 14).lines)
+    expect (extractor.byLineInData (script, /^it$/, 14).lines)
       .to.be.eql ({6: 5, 7: 5, 9: 5, 10: 5, 12: 5});
-    expect (extractor.byLineInData (script, 'it', 22).lines)
+    expect (extractor.byLineInData (script, /^it$/, 22).lines)
       .to.be.eql ({16: 15, 17: 15, 19: 15, 20: 15, 22: 15});
-    expect (extractor.byLineInData (script, 'it', 35).lines)
+    expect (extractor.byLineInData (script, /^it$/, 35).lines)
       .to.be.eql ({});
   });
 
   it ('#_getTestName', function () {
     const extractor = new Extractor ();
-    expect (extractor._getTestBody (script, 'it', 4).name).to.be.null;
-    expect (extractor._getTestBody (script, 'it', 5).name).to.be.eql ('_foo');
-    expect (extractor._getTestBody (script, 'it', 14).name).to.be.eql ('_foo');
-    expect (extractor._getTestBody (script, 'it', 15).name).to.be.eql ('_bar');
-    expect (extractor._getTestBody (script, 'it', 22).name).to.be.eql ('_bar');
-    expect (extractor._getTestBody (script, 'it', 24).name).to.be.eql ('_bar');
-    expect (extractor._getTestBody (script, 'it', 35).name).to.be.null;
+    expect (extractor._getTestBody (script, /^it$/, 4).name).to.be.null;
+    expect (extractor._getTestBody (script, /^it$/, 5).name).to.be.eql ('_foo');
+    expect (extractor._getTestBody (script, /^it$/, 14).name).to.be.eql ('_foo');
+    expect (extractor._getTestBody (script, /^it$/, 15).name).to.be.eql ('_bar');
+    expect (extractor._getTestBody (script, /^it$/, 22).name).to.be.eql ('_bar');
+    expect (extractor._getTestBody (script, /^it$/, 24).name).to.be.eql ('_bar');
+    expect (extractor._getTestBody (script, /^it$/, 35).name).to.be.null;
   });
 });
