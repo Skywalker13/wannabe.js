@@ -9,6 +9,9 @@
   "author": "Mathieu Schroeter",
   "license": "MIT",
   "dependencies": {
+    "babel-core": "^6.21.0",
+    "babel-preset-es2015": "^6.18.0",
+    "babel-preset-stage-0": "^6.16.0",
     "babylon": "^6.8.3",
     "escape-string-regexp": "^1.0.5",
     "mocha": "^2.5.3",
