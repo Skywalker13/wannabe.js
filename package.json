@@ -9,10 +9,10 @@
   "author": "Mathieu Schroeter",
   "license": "MIT",
   "dependencies": {
-    "babylon": "^6.8.3",
+    "babylon": "^6.17.0",
     "escape-string-regexp": "^1.0.5",
-    "mocha": "^2.5.3",
-    "tmp": "0.0.28",
+    "mocha": "^3.3.0",
+    "tmp": "0.0.31",
     "traverse": "^0.6.6",
     "watt": "^3.3.0"
   },
