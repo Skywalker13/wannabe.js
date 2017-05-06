@@ -17,6 +17,7 @@
     "watt": "^3.3.0"
   },
   "devDependencies": {
-    "chai": "^3.5.0"
+    "chai": "^3.5.0",
+    "xcraft-dev-rules": "^0.1.15"
   }
 }
